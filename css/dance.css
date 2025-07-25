@@ -52,3 +52,17 @@
     font-size: 0.9rem;
     opacity: 0.9;
 }
+
+.dance-card {
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.dance-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 8px;
+}
