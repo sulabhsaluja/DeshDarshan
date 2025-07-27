@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore India</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -298,41 +299,35 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top " style="background-color:black">
-        <div class="container-fluid">
-            <a class="navbar-brand navbarhover" href="home1.html">DeshDarshan</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link  navbarhover" aria-current="page" href="about us.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  navbarhover" href="crazyfacts.html">Crazy Facts </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  navbarhover" href="exploreindia.html">Explore India </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  navbarhover" href="destination.html">Hidden Destinations </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link  navbarhover" href="contactus.html">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  navbarhover" href="feedback.html">Feedback</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h2 data-translate="header">Desh Darshan</h2>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="pages/about us.html" data-translate="nav-about">About Us</a></li>
+        <li><a href="pages/explore.html" data-translate="nav-explore">Explore India</a></li>
+        <li><a href="pages/feedback.html" data-translate="nav-feedback">Feedback</a></li>
+        <li><a href="pages/contactus.html" data-translate="nav-contact">Contact Us</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a href="pages/login.html" class="btn-login">
+          <span>Login</span>
+          <i class="fas fa-sign-in-alt"></i>
+        </a>
+        <a href="pages/signup.html" class="btn-signup">
+          <span>Signup</span>
+          <i class="fas fa-user-plus"></i>
+        </a>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
     <br><br><br>
     <audio id="backgroundMusic" loop>
         <source src="https://www.soundjay.com/misc/sounds/indian-classical.mp3" type="audio/mpeg">
