@@ -1,0 +1,66 @@
+.compass-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+.compass-svg {
+  width: 350px;
+  height: 350px;
+  max-width: 90vw;
+  max-height: 60vw;
+  background: #fffbe7;
+  border-radius: 50%;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.compass-region {
+  fill: #e0c97f;
+  stroke: #bfa14a;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: fill 0.2s, filter 0.2s;
+}
+.compass-region:hover, .compass-region.active {
+  fill: #f7e6a2;
+  filter: drop-shadow(0 0 8px #bfa14a);
+}
+#region-central {
+  fill: #f5d76e;
+  stroke: #bfa14a;
+}
+.compass-label {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  fill: #7a5c13;
+  pointer-events: none;
+  user-select: none;
+}
+.compass-tooltip {
+  position: absolute;
+  background: #fffbe7;
+  color: #7a5c13;
+  border: 1px solid #bfa14a;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  white-space: nowrap;
+}
+#region-states-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+@media (max-width: 600px) {
+  .compass-svg {
+    width: 90vw;
+    height: 90vw;
+    min-width: 220px;
+    min-height: 220px;
+  }
+  .compass-label {
+    font-size: 0.9rem;
+  }
+} 
