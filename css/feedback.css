@@ -89,6 +89,7 @@ body::before {
 .nav-buttons {
     display: flex;
     gap: 1rem;
+    padding-left: 40px;
 }
 
 .nav-buttons a {
