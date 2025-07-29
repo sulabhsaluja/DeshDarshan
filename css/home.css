@@ -127,6 +127,21 @@ body {
     box-shadow: 5pxpx 5px 5px 5px rgba(252, 209, 39, 0.925);
 }
 
+.btn-signup {
+    background-color: transparent;
+    color: #ff9b36;
+    border: 2px solid #ffcc00;
+    transition: all 0.3s ease;
+}
+
+.btn-signup:hover {
+    background-color: #ffcc00;
+    color: black;
+    padding-right: 2.1rem;
+    /* transform: translateY(-px); */
+    box-shadow: 5pxpx 5px 5px 5px rgba(252, 209, 39, 0.925);
+}
+
 /* --- Signup Button ---
 .btn-signup {
     background-color: #ff9933;
