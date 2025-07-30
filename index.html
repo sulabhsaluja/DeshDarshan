@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spirit of India</title>
-  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="./css/home.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -22,44 +22,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spirit of India</title>
     <link rel="stylesheet" href="./css/home.css" />
-    <link rel="stylesheet" href="css/top-destination.css" />
+    <link rel="stylesheet" href="./css/top-destination.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2 data-translate="header">Desh Darshan</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="./pages/about us.html" data-translate="nav-about">About Us</a></li>
-                <li><a href="./pages/explore.html" data-translate="nav-explore">Explore India</a></li>
-                <li><a href="./pages/feedback.html" data-translate="nav-feedback">Feedback</a></li>
-                <li><a href="#footer-contact" data-translate="nav-contact">Contact Us</a></li>
-            </ul>
-            <div class="nav-buttons">
-
-         
-              <a href="./pages/login.html" class="btn-login">
-                <span>Login</span>
-                <i class="fas fa-sign-in-alt" style="color: #000;"></i>
-              </a>
-              <a href="./pages/signup.html" class="btn-signup">
-                <span>Signup</span>
-                <i class="fas fa-user-plus"></i>
-              </a>
-
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-
+    
 
   <!-- Navigation Bar -->
   <nav class="navbar">
@@ -140,7 +108,7 @@
 
   </section>
 
-  </section> -->
+  </section>
 
 
     <section class="hero">
@@ -150,15 +118,7 @@
           <div class="block"></div>
         </div>
 
-        <div class="intro-logo">
-          <div class="word" id="word1">
-            <h1>Desh</h1>
-          </div>
-          <div class="word" id="word2">
-            <h1>Darshan</h1>
-          </div>
-        </div>
-
+        
         <div class="hero-container">
           <div class="hero-img">
             <img src="./assets/images/hero.jpg" alt="background" class="slider-img" />
@@ -368,60 +328,7 @@
     </div>
   </section>
 
-  <!-- Dance Culture Section -->
-  <section class="dance-culture">
-    <div class="container">
-      <h2 class="section-title" data-translate="dance-title">Dance Culture of India</h2>
-      <div class="dance-grid">
-        <div class="dance-item">
-          <img src="br2.jpg" alt="Bharatanatyam dancer">
-          <div class="dance-overlay">
-            <h3 data-translate="bharatanatyam-title">Bharatanatyam</h3>
-            <p data-translate="bharatanatyam-desc">Classical dance from Tamil Nadu</p>
-          </div>
-          <div class="comments-section">
-            <h4>Comments</h4>
-            <div class="comments-list"></div>
-            <form class="comment-form">
-              <input type="text" class="comment-name" placeholder="Your name" required>
-              <textarea class="comment-text" placeholder="Your comment" required></textarea>
-              <button type="submit">Post</button>
-            </form>
-          </div>
-        </div>
-        <div class="dance-item">
-          <img src="kr1.jpg" alt="Kathak dancer">
-          <div class="dance-overlay">
-            <h3 data-translate="kathak-title">Kathak</h3>
-            <p data-translate="kathak-desc">Storytelling dance from North India</p>
-          </div>
-          <div class="comments-section">
-            <h4>Comments</h4>
-            <div class="comments-list"></div>
-            <form class="comment-form">
-              <input type="text" class="comment-name" placeholder="Your name" required>
-              <textarea class="comment-text" placeholder="Your comment" required></textarea>
-              <button type="submit">Post</button>
-            </form>
-          </div>
-        </div>
-        <div class="dance-item">
-          <img src="od2.jpg" alt="Odissi dancer">
-          <div class="dance-overlay">
-            <h3 data-translate="odissi-title">Odissi</h3>
-            <p data-translate="odissi-desc">Graceful dance from Odisha</p>
-          </div>
-          <div class="comments-section">
-            <h4>Comments</h4>
-            <div class="comments-list"></div>
-            <form class="comment-form">
-              <input type="text" class="comment-name" placeholder="Your name" required>
-              <textarea class="comment-text" placeholder="Your comment" required></textarea>
-              <button type="submit">Post</button>
-            </form>
-          </div>
-
-    </section>
+  
 
     <!-- Dance Culture Section -->
     <section class="dance-culture">
@@ -498,6 +405,33 @@
       </div>
     </section>
 
+    <!-- Top Destinations Section -->
+  <section class="top-destinations">
+    <div class="container">
+      <h2 class="section-title">Top Destinations</h2>
+      <div class="destinations-grid">
+        <div class="destination-card">
+          <img src="./assets/images/kerela.jpg" alt="Kerala" />
+          <h3>Kerala</h3>
+          <p>Experience the tranquil backwaters and lush greenery.</p>
+          <a href="#" class="explore-btn">Explore More</a>
+        </div>
+        <div class="destination-card">
+          <img src="./assets/images/goa.jpg" alt="Goa" />
+          <h3>Goa</h3>
+          <p>Sun, sand, and sea – a perfect beach escape awaits.</p>
+          <a href="#" class="explore-btn">Explore More</a>
+        </div>
+        <div class="destination-card">
+          <img src="./assets/images/kashmir.jpg" alt="Kashmir" />
+          <h3>Kashmir</h3>
+          <p>Heaven on Earth with snow-capped mountains and valleys.</p>
+          <a href="#" class="explore-btn">Explore More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
     <!--footer-->
     <footer>
@@ -565,6 +499,8 @@
           </div>
         </div>
       </div>
+
+      
       <!--copyright -->
       <div class="copyright-section">
         &copy; <span id="year"></span> Desh Darshan. All rights reserved.
@@ -589,6 +525,8 @@
 </html>
 
 
+
+=======
   <!-- Top Destinations Section -->
   <section class="top-destinations">
     <div class="container">
@@ -629,8 +567,6 @@
   <script src="home.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+
   
 
-</body>
-
-</html>
