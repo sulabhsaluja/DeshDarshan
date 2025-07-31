@@ -577,6 +577,7 @@ button, a, .culture-item, .food-item, .dance-item {
 
     .nav-buttons {
         display: none;
+        margin: 5px;
     }
 
     .slide-content h1 {
