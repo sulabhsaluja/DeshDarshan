@@ -35,7 +35,7 @@ body {
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,7 +101,7 @@ body {
     transform: translateX(-10px);
 }
 
-/* Hover behavior */
+Hover behavior
 .nav-buttons a:hover span {
     transform: translateX(5px);
 }
@@ -116,6 +116,7 @@ body {
     background-color: transparent;
     color: #ff9b36;
     border: 2px solid #ffcc00;
+
     transition: all 0.3s ease;
 }
 
@@ -123,8 +124,9 @@ body {
     background-color: #ffcc00;
     color: black;
     padding-right: 2.1rem;
-    /* transform: translateY(-px); */
+    transform: translateY(-px);
     box-shadow: 5pxpx 5px 5px 5px rgba(252, 209, 39, 0.925);
+
 }
 
 .btn-signup {
@@ -151,9 +153,10 @@ body {
 }
 
 .btn-signup:hover {
-    background-color: #ff8c1a;
-    padding-right: 2.6rem;
-    transform: translateY(-2px);
+    background-color: #ffcc00;
+    color: black;
+    padding-right: 3rem;
+    transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 117, 24, 0.3);
 } */
 
@@ -607,6 +610,7 @@ button, a, .culture-item, .food-item, .dance-item {
 
     .nav-buttons {
         display: none;
+        margin: 5px;
     }
 
     .slide-content h1 {
