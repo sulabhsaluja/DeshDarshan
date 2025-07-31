@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <!-- Leaflet JS for map functionality -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  </head>
-
+    <style>
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #e3e0de 0%, #dbd9d8 25%, #dbd9d8 50%, #dbd9d8 75%, #dbd9d8 100%);
@@ -22,6 +21,7 @@
             animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed navbar */
         }
 
         @keyframes gradientShift {
@@ -274,14 +274,14 @@
         }
 
         .btn-signup {
-            background: rgba(255, 255, 255, 0.9);
-            color: #667eea;
+            background: #ff8c00; /* Orange color */
+            color: white;
         }
 
         .btn-login {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: #ff8c00; /* Orange background fill */
+            color: white; /* White text for contrast */
+            border: 2px solid #ff8c00; /* Orange border */
         }
 
         .modal-btn:hover {
@@ -290,13 +290,14 @@
         }
 
         .btn-signup:hover {
-            background: white;
-            color: #5a6fd8;
+            background: #ff7700; /* Darker orange on hover */
+            color: white;
         }
 
         .btn-login:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: white;
+            background: #ff7700; /* Darker orange background on hover */
+            border-color: #ff7700; /* Darker orange border on hover */
+            color: white; /* Keep white text on hover */
         }
 
         .close-modal {
