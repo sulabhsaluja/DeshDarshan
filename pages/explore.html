@@ -1374,48 +1374,10 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function hideModal() {
-            document.getElementById('lockModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function showStateMap(stateName) {
-            const stateInfo = stateCoordinates[stateName];
-            if (!stateInfo) {
-                console.error('State coordinates not found for:', stateName);
-                return;
-            }
-
-            const stateIndex = stateData.findIndex(state => state.name === stateName);
-            const isLocked = stateIndex >= 4;
-
-            document.getElementById('mapModalTitle').textContent = stateName;
-            document.getElementById('mapModalSubtitle').textContent = isLocked
-                ? `🔒 Preview Location • Capital: ${stateInfo.capital}`
-                : `Capital: ${stateInfo.capital}`;
-
-            document.getElementById('mapModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-                initializeMap(stateInfo.lat, stateInfo.lng, stateName, stateInfo.capital, isLocked);
-            }, 100);
-        }
-
-        function hideMapModal() {
-            document.getElementById('mapModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-
-            if (currentMap) {
-                currentMap.remove();
-                currentMap = null;
-            }
-        }
-
- function initializeMap(lat, lng, stateName, capital, isLocked = false) {
+function initializeMap(lat, lng, stateName, capital, isLocked = false) {
     if (currentMap) currentMap.remove();
 
-    // Get stateInfo for link (needed for Explore and future states)
+    // Get stateInfo for link (needed for Explore, Punjab, and future states)
     const stateInfo = stateCoordinates[stateName] || {};
 
     // Add popup with state information
@@ -1433,6 +1395,19 @@
             </p>
         `;
     }
+
+    popupContent += `</div>`;
+
+    currentMap = L.map('mapContainer').setView([lat, lng], 6);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(currentMap);
+
+    L.marker([lat, lng]).addTo(currentMap)
+        .bindPopup(popupContent)
+        .openPopup();
+}
 
     // Add "Visit More" link if available
     if (stateInfo.link) {
