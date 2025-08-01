@@ -1,106 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feedback Form - DeshDarshan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/feedback.css">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      /* --- FONTS & BASIC SETUP --- */
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-image: url('../assets/images/redfort.png'); /* IMPORTANT: Make sure this path is correct */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.1); /* Light overlay for readability */
+        z-index: -1;
+      }
+
+      /* --- NAVIGATION --- */
+      .navbar {
+        background: rgba(0, 0, 0, 0.9) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .navbarhover:hover {
+        color: rgb(241, 150, 14) !important;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+      }
+
+      /* --- MAIN FORM CONTAINER --- */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+      .form-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(139, 69, 19, 0.25);
+        border: 2px solid rgba(222, 184, 135, 0.4);
+        width: 100%;
+        max-width: 550px;
+        animation: fadeInUp 1s ease-out;
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .form-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #8B4513, #A0522D, #CD853F);
+      }
+      .form-card h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #654321 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .form-card p {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #654321;
+        margin-bottom: 35px;
+      }
+
+      /* --- FORM STYLING --- */
+      .form-group {
+        margin-bottom: 25px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #654321;
+      }
+      .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid rgba(160, 82, 45, 0.3);
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+      }
+      .form-group input:focus, .form-group textarea:focus {
+        outline: none;
+        border-color: #A0522D;
+        box-shadow: 0 0 0 4px rgba(160, 82, 45, 0.15);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* --- STAR RATING STYLING (NEW) --- */
+      .star-rating-container {
+        display: flex;
+        gap: 10px;
+        font-size: 2.5rem;
+        color: #D2B48C; /* Light brown for empty stars */
+      }
+      .star-rating-container span {
+        cursor: pointer;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .star-rating-container span:hover {
+        transform: scale(1.2);
+      }
+      .star-rating-container span.active {
+        color: #FFC107; /* Gold for selected/hovered stars */
+      }
+
+      /* --- SUBMIT BUTTON --- */
+      .submit-btn {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, #ff9933 0%, #e68a00 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+        box-shadow: 0 8px 20px rgba(255, 153, 51, 0.3);
+      }
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(255, 153, 51, 0.4);
+      }
+
+      /* --- POPUP & ERROR STYLING --- */
+      .popup-overlay {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 1000;
+        opacity: 0; visibility: hidden;
+        transition: all 0.4s ease;
+      }
+      .popup-overlay.show { opacity: 1; visibility: visible; }
+      .popup {
+        background: white; padding: 50px; border-radius: 25px;
+        text-align: center; max-width: 450px; width: 90%;
+        transform: scale(0.7);
+        transition: all 0.4s ease;
+      }
+      .popup-overlay.show .popup { transform: scale(1); }
+      .popup-message { font-size: 1.2rem; line-height: 1.7; color: #654321; margin-bottom: 30px; }
+      .popup-close { background: #ff9933; color: white; border: none; padding: 15px 35px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+      .popup-close:hover { background: #e68a00; }
+      .error { border-color: #dc3545 !important; }
+      .error-message { color: #dc3545; font-size: 0.9rem; margin-top: 8px; display: none; font-weight: 500; }
+      .error-message.show { display: block; }
+    </style>
+  </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>DeshDarshan</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="home1.html">Home</a></li>
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="crazyfacts.html">Crazy Facts</a></li>
-                <li><a href="explore.html">Explore India</a></li>
-                <li><a href="destination.html">Hidden Destinations</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand navbarhover" href="home1.html">DeshDarshan</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link navbarhover" href="about us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="crazyfacts.html">Crazy Facts</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="explore.html">Explore India</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="destination.html">Hidden Destinations</a></li>
             </ul>
-            <div class="nav-buttons">
-                <a href="contactus.html"><span>Contact Us</span><i>→</i></a>
-                <a href="feedback.html"><span>Feedback</span><i>→</i></a>
-            </div>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link navbarhover" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="feedback.html">Feedback</a></li>
+            </ul>
+          </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="container">
-            <div class="form-card">
-                <h1 class="form-title">Feedback Form</h1>
-                
-                <form id="feedbackForm">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Name *</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                        <div class="error-message" id="nameError">Please enter your name</div>
-                    </div>
+    <div class="container">
+      <div class="form-card">
+        <h1>Share Your Feedback</h1>
+        <p>Your insights help us improve the DeshDarshan experience!</p>
+        <form id="feedbackForm" novalidate>
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required />
+            <div class="error-message" id="nameError">Please enter your name</div>
+          </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email ID *</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                        <div class="error-message" id="emailError">Please enter a valid email address</div>
-                    </div>
+          <div class="form-group">
+            <label for="email">Email ID *</label>
+            <input type="email" id="email" name="email" required />
+            <div class="error-message" id="emailError">Please enter a valid email</div>
+          </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" required>
-                        <div class="error-message" id="phoneError">Please enter your phone number</div>
-                    </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required />
+            <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+          </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Star Rating *</label>
-                        <div class="star-rating" id="starRating">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
-                        </div>
-                        <div class="error-message" id="ratingError">Please select a rating</div>
-                    </div>
+          <div class="form-group">
+              <label for="starRating">Star Rating *</label>
+              <div class="star-rating-container" id="starRating">
+                  <span data-rating="1">★</span>
+                  <span data-rating="2">★</span>
+                  <span data-rating="3">★</span>
+                  <span data-rating="4">★</span>
+                  <span data-rating="5">★</span>
+              </div>
+              <div class="error-message" id="ratingError">Please select a rating</div>
+          </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message *</label>
-                        <textarea id="message" name="message" class="form-textarea" rows="4" required placeholder="Share your thoughts about your experience..."></textarea>
-                        <div class="error-message" id="messageError">Please enter your message</div>
-                    </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Share your thoughts about your experience..." required></textarea>
+            <div class="error-message" id="messageError">Please enter your message</div>
+          </div>
 
-                    <div class="share-section">
-                        <div class="share-title">Share Your Experience</div>
-                        <div class="share-links">
-                            <a href="https://www.instagram.com/" target="_blank" class="share-link">
-                                📷 Instagram
-                            </a>
-                            <a href="mailto:feedback@deshdarshan.com?subject=My Experience Feedback" class="share-link">
-                                ✉️ Email
-                            </a>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Submit Feedback</button>
-                </form>
-            </div>
-        </div>
+          <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+      </div>
     </div>
 
-    <!-- Popup -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup-card">
-            <p class="popup-message">
-                From gurdwaras echoing shabads to churches ringing carols, from folk dances of every land to the sacred chants of every faith 
-                — your feedback adds warmth to our colorful yatra across India. Thank you for being part of it!🌺❤️
-            </p>
-            <button class="popup-close" onclick="closePopup()">Close</button>
+    <div class="popup-overlay" id="successPopup">
+      <div class="popup">
+        <div class="popup-message">
+          Your feedback adds warmth to our colorful yatra across India. Thank you for being part of it! 🌺❤️
         </div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+      </div>
     </div>
 
+    <script>
+      const form = document.getElementById("feedbackForm");
+      const stars = document.querySelectorAll("#starRating span");
+      let selectedRating = 0;
+
+      // --- STAR RATING LOGIC ---
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          selectedRating = parseInt(star.getAttribute('data-rating'));
+          updateStars();
+          // Hide error message on click
+          document.getElementById('ratingError').classList.remove('show');
+        });
+
+        star.addEventListener('mouseover', () => {
+          highlightStars(parseInt(star.getAttribute('data-rating')));
+        });
+      });
+
+      document.getElementById('starRating').addEventListener('mouseleave', () => {
+        highlightStars(selectedRating);
+      });
+
+      function highlightStars(rating) {
+        stars.forEach((star, index) => {
+          star.classList.toggle('active', index < rating);
+        });
+      }
+      
+      function updateStars() {
+        highlightStars(selectedRating);
+      }
+
+
+      // --- FORM VALIDATION & SUBMISSION ---
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let isValid = true;
+
+        // Clear previous errors
+        document.querySelectorAll(".error").forEach(el => el.classList.remove("error"));
+        document.querySelectorAll(".error-message").forEach(el => el.classList.remove("show"));
+
+        // Validate Name
+        const nameField = document.getElementById('name');
+        if (!nameField.value.trim() || !/^[A-Za-z ]{3,}$/.test(nameField.value)) {
+          showError(nameField, 'Please enter a valid name (min 3 letters)');
+          isValid = false;
+        }
+
+        // Validate Email
+        const emailField = document.getElementById('email');
+        if (!emailField.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+          showError(emailField, 'Please enter a valid email address');
+          isValid = false;
+        }
+        
+        // Validate Phone
+        const phoneField = document.getElementById('phone');
+        if (!phoneField.value.trim() || !/^[\d\s\-\+()]{10,}$/.test(phoneField.value)) {
+            showError(phoneField, 'Please enter a valid 10-digit phone number');
+            isValid = false;
+        }
+
+        // Validate Star Rating
+        if (selectedRating === 0) {
+            document.getElementById('ratingError').classList.add('show');
+            isValid = false;
+        }
+
+        // Validate Message
+        const messageField = document.getElementById('message');
+        if (!messageField.value.trim()) {
+            showError(messageField, 'Please enter your message');
+            isValid = false;
+        }
+
+        // If all valid, show popup
+        if (isValid) {
+          showSuccessPopup();
+        } else {
+          const firstError = document.querySelector(".error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+            firstError.focus();
+          }
+        }
+      });
+      
+      function showError(field, message) {
+          field.classList.add('error');
+          const errorElement = document.getElementById(field.id + 'Error');
+          errorElement.textContent = message;
+          errorElement.classList.add('show');
+      }
+      
+      // --- POPUP LOGIC ---
+      function showSuccessPopup() {
+        const popup = document.getElementById("successPopup");
+        popup.classList.add("show");
+      }
+      
+      function closePopup() {
+        const popup = document.getElementById("successPopup");
+        popup.classList.remove("show");
+        form.reset();
+        selectedRating = 0; // Reset rating
+        updateStars(); // Reset star visuals
+      }
+      
+      // Close popup on Escape key
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && document.getElementById('successPopup').classList.contains('show')) {
+              closePopup();
+          }
+      });
+
+      // Remove error on input
+      document.querySelectorAll("input, textarea").forEach(field => {
+          field.addEventListener("input", function () {
+              this.classList.remove("error");
+              const errorElement = document.getElementById(this.id + "Error");
+              if (errorElement) {
+                  errorElement.classList.remove("show");
+              }
+          });
+      });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/feedback.js"></script>
 </body>
 </html>
