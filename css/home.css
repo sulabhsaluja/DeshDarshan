@@ -117,6 +117,7 @@ Hover behavior
     color: #ffcc00;
     border: 2px solid #ffcc00;
     transition: all 0.3s ease;
+    margin-left: 50px;
 }
 
 .btn-login:hover {
@@ -133,6 +134,7 @@ Hover behavior
     color: white;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    margin-left: 5px;
 }
 
 .btn-signup:hover {
