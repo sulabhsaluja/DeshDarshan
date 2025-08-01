@@ -1,142 +1,646 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proudly Punjab | DeshDarshan</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-white text-gray-800 font-sans scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Form - DeshDarshan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- FONTS & BASIC SETUP --- */
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-image: url('../assets/images/redfort.png'); /* IMPORTANT: Make sure this path is correct */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.1); /* Light overlay for readability */
+        z-index: -1;
+      }
 
-  <!-- Navbar -->
-  <header class="bg-green-900 text-white sticky top-0 z-50 shadow">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-      <h1 class="text-2xl font-bold">DeshDarshan</h1>
-      <nav class="space-x-6 text-sm font-semibold">
-        <a href="#home" class="hover:underline">Home</a>
-        <a href="#culture" class="hover:underline">Culture</a>
-        <a href="#places" class="hover:underline">Places</a>
-        <a href="#food" class="hover:underline">Food</a>
-        <a href="#festivals" class="hover:underline">Festivals</a>
-        <a href="#crafts" class="hover:underline">Art</a>
-      </nav>
-    </div>
-  </header>
+      /* --- NAVIGATION --- */
+      .navbar {
+        background: rgba(0, 0, 0, 0.9) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .navbarhover:hover {
+        color: rgb(241, 150, 14) !important;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+      }
 
-  <!-- Hero Section -->
-  <section id="home" class="relative h-[100vh] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581683367486-0501dfb62691?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
-    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center px-4">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4">Proudly Punjab</h1>
-      <p class="text-xl max-w-2xl">Land of unity, music, culture, and unmatched hospitality.</p>
-    </div>
-  </section>
+      /* --- MAIN FORM CONTAINER --- */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+      .form-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(139, 69, 19, 0.25);
+        border: 2px solid rgba(222, 184, 135, 0.4);
+        width: 100%;
+        max-width: 550px;
+        animation: fadeInUp 1s ease-out;
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .form-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #8B4513, #A0522D, #CD853F);
+      }
+      .form-card h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #654321 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .form-card p {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #654321;
+        margin-bottom: 35px;
+      }
 
-  <!-- Culture -->
-<section id="culture" class="py-16 px-6 md:px-20 bg-gray-50">
-  <div class="text-center max-w-3xl mx-auto mb-12">
-    <h2 class="text-4xl font-bold text-green-800 mb-4">✨ Punjab Culture</h2>
-    <p class="text-lg text-gray-600">Dance, language, music, and traditional attire are woven into the everyday life of Punjabis.</p>
-  </div>
-  <div class="grid md:grid-cols-2 gap-10 items-center">
-    <div class="flex justify-center">
-      <img src="/assets/images/punjab/bhnagra.png"
-           alt="Punjabi Culture"
-           class="w-full max-w-[500px] h-auto object-cover rounded-lg shadow-lg" />
-    </div>
-    <ul class="list-disc list-inside text-lg text-gray-700">
-      <li><strong>Bhangra & Giddha:</strong> Energetic folk dances</li>
-      <li><strong>Phulkari:</strong> Colorful hand embroidery art</li>
-      <li><strong>Sufism:</strong> Deep-rooted musical traditions</li>
-      <li><strong>Punjabi Language:</strong> Spoken with love and pride</li>
-    </ul>
-  </div>
-</section>
+      /* --- FORM STYLING --- */
+      .form-group {
+        margin-bottom: 25px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #654321;
+      }
+      .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid rgba(160, 82, 45, 0.3);
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+      }
+      .form-group input:focus, .form-group textarea:focus {
+        outline: none;
+        border-color: #A0522D;
+        box-shadow: 0 0 0 4px rgba(160, 82, 45, 0.15);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
 
+      /* --- STAR RATING STYLING (NEW) --- */
+      .star-rating-container {
+        display: flex;
+        gap: 10px;
+        font-size: 2.5rem;
+        color: #D2B48C; /* Light brown for empty stars */
+      }
+      .star-rating-container span {
+        cursor: pointer;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .star-rating-container span:hover {
+        transform: scale(1.2);
+      }
+      .star-rating-container span.active {
+        color: #FFC107; /* Gold for selected/hovered stars */
+      }
 
+      /* --- SUBMIT BUTTON --- */
+      .submit-btn {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, #ff9933 0%, #e68a00 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+        box-shadow: 0 8px 20px rgba(255, 153, 51, 0.3);
+      }
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(255, 153, 51, 0.4);
+      }
 
-  <!-- Places -->
-  <section id="places" class="bg-white py-16 px-6 md:px-20">
-    <h2 class="text-3xl font-bold text-green-800 mb-10 text-center">📍 Must Visit Places</h2>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div class="bg-gray-100 p-4 rounded-xl shadow hover:shadow-lg transition">
-        <img src="/assets/images/punjab/golden_temple.jpg" class="rounded-lg mb-4" alt="Golden Temple">
-        <h3 class="text-xl font-semibold mb-2">Golden Temple</h3>
-        <p>The spiritual and cultural center of Sikhism.</p>
+      /* --- POPUP & ERROR STYLING --- */
+      .popup-overlay {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 1000;
+        opacity: 0; visibility: hidden;
+        transition: all 0.4s ease;
+      }
+      .popup-overlay.show { opacity: 1; visibility: visible; }
+      .popup {
+        background: white; padding: 50px; border-radius: 25px;
+        text-align: center; max-width: 450px; width: 90%;
+        transform: scale(0.7);
+        transition: all 0.4s ease;
+      }
+      .popup-overlay.show .popup { transform: scale(1); }
+      .popup-message { font-size: 1.2rem; line-height: 1.7; color: #654321; margin-bottom: 30px; }
+      .popup-close { background: #ff9933; color: white; border: none; padding: 15px 35px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+      .popup-close:hover { background: #e68a00; }
+      .error { border-color: #dc3545 !important; }
+      .error-message { color: #dc3545; font-size: 0.9rem; margin-top: 8px; display: none; font-weight: 500; }
+      .error-message.show { display: block; }
+      
+      
+                  /*footer */
+
+      footer {
+        background-color: black;
+        color: white;
+        padding: 2.5rem 1.5rem;
+        margin-top: auto;
+        width: 100%;
+        box-sizing: border-box;
+        bottom: 0;
+      }
+
+      .footer-content-wrapper {
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-top: 0px;
+      }
+
+      .footer-section p {
+        font-size: 0.875rem;
+        color: #a0aec0;
+        line-height: 1.625;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .footer-link,
+      .footer-contact-item {
+        color: #a0aec0;
+        transition: color 0.3s ease;
+        text-decoration: none;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .footer-link:hover,
+      .footer-contact-item:hover {
+        color: #f7fafc;
+      }
+
+      .footer-contact-item span {
+        margin-left: 5px;
+      }
+
+      .footer-section {
+        flex: 1;
+        min-width: 180px;
+      }
+
+      .footer-section-title {
+        color: white;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: text-shadow 0.5s ease;
+      }
+
+      .footer-section-title:hover {
+        font-size: 1.2rem;
+        font-weight: 750;
+        text-shadow: 1px 1px 8px white;
+      }
+
+      .social-icons-container {
+        margin-top: 10px;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #4a5568;
+        color: #cbd5e0;
+        border: 1px solid #4a5568;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          border-color 0.3s ease;
+        text-decoration: none;
+        border-radius: 50%;
+      }
+
+      .social-icon i {
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .social-icon:hover {
+        background-color: rgba(255, 255, 255, 0.804);
+        color: #1a202c;
+        border-color: rgba(255, 255, 255, 0.804);
+        box-shadow: 0 0 15px white;
+      }
+
+      .copyright-section {
+        border-top: 1px solid #4a5568;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        text-align: center;
+        color: #a0aec0;
+        font-size: 0.875rem;
+      }
+
+      @media (min-width: 768px) {
+        .footer-content-wrapper {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (min-width: 640px) {
+        .footer-content-wrapper {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .footer-content-wrapper {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+
+      /* Animations */
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+    </style>
+  </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand navbarhover" href="home1.html">DeshDarshan</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link navbarhover" href="about us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="crazyfacts.html">Crazy Facts</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="explore.html">Explore India</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="destination.html">Hidden Destinations</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link navbarhover" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link navbarhover" href="feedback.html">Feedback</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container">
+      <div class="form-card">
+        <h1>Share Your Feedback</h1>
+        <p>Your insights help us improve the DeshDarshan experience!</p>
+        <form id="feedbackForm" novalidate>
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required />
+            <div class="error-message" id="nameError">Please enter your name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email ID *</label>
+            <input type="email" id="email" name="email" required />
+            <div class="error-message" id="emailError">Please enter a valid email</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required />
+            <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+          </div>
+
+          <div class="form-group">
+              <label for="starRating">Star Rating *</label>
+              <div class="star-rating-container" id="starRating">
+                  <span data-rating="1">★</span>
+                  <span data-rating="2">★</span>
+                  <span data-rating="3">★</span>
+                  <span data-rating="4">★</span>
+                  <span data-rating="5">★</span>
+              </div>
+              <div class="error-message" id="ratingError">Please select a rating</div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Share your thoughts about your experience..." required></textarea>
+            <div class="error-message" id="messageError">Please enter your message</div>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
       </div>
-      <div class="bg-gray-100 p-4 rounded-xl shadow hover:shadow-lg transition">
-        <img src="/assets/images/punjab/wagah_border.webp" class="rounded-lg mb-4" alt="Wagah Border">
-        <h3 class="text-xl font-semibold mb-2">Wagah Border</h3>
-        <p>Famous for its patriotic flag-lowering ceremony.</p>
-      </div>
-      <div class="bg-gray-100 p-4 rounded-xl shadow hover:shadow-lg transition">
-        <img src="/assets/images/punjab/anandpur-sahib26128.avif" class="rounded-lg mb-4" alt="Anandpur Sahib">
-        <h3 class="text-xl font-semibold mb-2">Anandpur Sahib</h3>
-        <p>One of the five Takhts and a key Sikh pilgrimage site.</p>
+    </div>
+
+    <div class="popup-overlay" id="successPopup">
+      <div class="popup">
+        <div class="popup-message">
+          Your feedback adds warmth to our colorful yatra across India. Thank you for being part of it! 🌺❤️
+        </div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
       </div>
     </div>
-  </section>
 
-  <!-- Food -->
-  <section id="food" class="py-16 px-6 md:px-20 bg-gray-50">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <img src="/assets/images/punjab/punjabi-foods.jpg" class="rounded-lg shadow-md" alt="Veg Punjabi Food">
-      <div>
-        <h2 class="text-3xl font-bold text-green-800 mb-4">🍲 Authentic Delights</h2>
-        <p class="text-lg text-gray-700 mb-4">Pure, flavorful, and full of love – Punjabi veg cuisine is a soulful experience.</p>
-        <ul class="list-disc list-inside text-gray-700 text-lg space-y-1">
-          <li>Sarson da Saag & Makki di Roti</li>
-          <li>Rajma Chawal</li>
-          <li>Chole Bhature</li>
-          <li>Paneer Bhurji</li>
-          <li>Sweet Lassi, Kheer, Pinni</li>
-        </ul>
+    <!--footer-->
+    <footer id="footer">
+      <div class="footer-content-wrapper">
+        <!-- Section 1: About Desh Darshan -->
+        <div class="footer-section">
+          <h3 class="footer-section-title">Desh Darshan</h3>
+          <p>
+            Desh Darshan is your gateway to the vibrant and diverse culture of
+            India. We aim to introduce the world to India's rich heritage,
+            traditions, arts, and history.
+          </p>
+        </div>
+
+        <!-- Section 2: Quick Links -->
+        <div class="footer-section">
+          <h3 class="footer-section-title">Quick Links</h3>
+          <ul>
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about us.html" class="footer-link">About Us</a></li>
+            <li>
+              <a href="explore.html" class="footer-link">Explore India</a>
+            </li>
+            <li><a href="feedback.html" class="footer-link">Feedback</a></li>
+            <li><a href="contactus.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Section 3: Contact Us -->
+        <div class="footer-section">
+          <h3 class="footer-section-title">Contact Us</h3>
+          <ul>
+            <li class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>hello@deshdarshan.in</span>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 1234567890</span>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>New Delhi, India</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 4: Follow Us -->
+        <div class="footer-section">
+          <h3 class="footer-section-title">Follow Us</h3>
+          <div class="social-icons-container">
+            <a href="#" class="social-icon" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="social-icon" aria-label="Behance"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Festivals (Improved Style) -->
-  <section id="festivals" class="py-16 px-6 md:px-20 bg-gray-50">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-green-800 mb-4">🎉 Celebrations & Festivals</h2>
-        <p class="text-lg text-gray-700 mb-4">
-          Festivals in Punjab are more than traditions—they are expressions of joy, devotion, and unity. Each festival reflects the cultural richness and spiritual essence of the state.
-        </p>
-        <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
-          <li><strong>Lohri:</strong> Bonfires, traditional songs, and dance to celebrate the harvest.</li>
-          <li><strong>Vaisakhi:</strong> Marks the Sikh New Year and the spring harvest.</li>
-          <li><strong>Gurpurab:</strong> Honoring the birth of Sikh Gurus with processions and kirtans.</li>
-          <li><strong>Hola Mohalla:</strong> Martial arts display and poetry at Anandpur Sahib.</li>
-        </ul>
+      <!--copyright -->
+      <div class="copyright-section">
+        &copy; <span id="year"></span> Desh Darshan. All rights reserved.
       </div>
-      <img src="/assets/images/punjab/dance.avif" class="rounded-lg shadow-md" alt="Punjab Festival">
-    </div>
-  </section>
+    </footer>
+    <!-- Footer -->
+  
+    <script>
+      const form = document.getElementById("feedbackForm");
+      const stars = document.querySelectorAll("#starRating span");
+      let selectedRating = 0;
 
-  <!-- Crafts -->
-  <section id="crafts" class="py-16 px-6 md:px-20 bg-white">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-green-800 mb-4">🎨 Folk Art & Handicrafts</h2>
-        <p class="text-lg text-gray-700 mb-4">
-          Punjab is rich in handmade crafts and vibrant artistry. Every piece tells a story of skill, love, and cultural pride.
-        </p>
-        <ul class="list-disc list-inside text-gray-700 text-lg space-y-1">
-          <li>Phulkari Embroidery</li>
-          <li>Punjabi Jutti (Footwear)</li>
-          <li>Wooden handicrafts & toys</li>
-          <li>Hand-painted pottery</li>
-        </ul>
-      </div>
-      <img src="/assets/images/punjab/phulkari.jpg" class="rounded-lg shadow-md" alt="Phulkari Art">
-    </div>
-  </section>
+      // --- STAR RATING LOGIC ---
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          selectedRating = parseInt(star.getAttribute('data-rating'));
+          updateStars();
+          // Hide error message on click
+          document.getElementById('ratingError').classList.remove('show');
+        });
 
-  <!-- Footer -->
-  <footer class="bg-green-900 text-white py-8 text-center">
-    <p class="text-lg font-semibold">© 2025 DeshDarshan</p>
-    <p class="text-sm mt-1">Made with ❤️ by someone proud of Punjab</p>
-  </footer>
+        star.addEventListener('mouseover', () => {
+          highlightStars(parseInt(star.getAttribute('data-rating')));
+        });
+      });
 
+      document.getElementById('starRating').addEventListener('mouseleave', () => {
+        highlightStars(selectedRating);
+      });
+
+      function highlightStars(rating) {
+        stars.forEach((star, index) => {
+          star.classList.toggle('active', index < rating);
+        });
+      }
+      
+      function updateStars() {
+        highlightStars(selectedRating);
+      }
+
+
+      // --- FORM VALIDATION & SUBMISSION ---
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let isValid = true;
+
+        // Clear previous errors
+        document.querySelectorAll(".error").forEach(el => el.classList.remove("error"));
+        document.querySelectorAll(".error-message").forEach(el => el.classList.remove("show"));
+
+        // Validate Name
+        const nameField = document.getElementById('name');
+        if (!nameField.value.trim() || !/^[A-Za-z ]{3,}$/.test(nameField.value)) {
+          showError(nameField, 'Please enter a valid name (min 3 letters)');
+          isValid = false;
+        }
+
+        // Validate Email
+        const emailField = document.getElementById('email');
+        if (!emailField.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+          showError(emailField, 'Please enter a valid email address');
+          isValid = false;
+        }
+        
+        // Validate Phone
+        const phoneField = document.getElementById('phone');
+        if (!phoneField.value.trim() || !/^[\d\s\-\+()]{10,}$/.test(phoneField.value)) {
+            showError(phoneField, 'Please enter a valid 10-digit phone number');
+            isValid = false;
+        }
+
+        // Validate Star Rating
+        if (selectedRating === 0) {
+            document.getElementById('ratingError').classList.add('show');
+            isValid = false;
+        }
+
+        // Validate Message
+        const messageField = document.getElementById('message');
+        if (!messageField.value.trim()) {
+            showError(messageField, 'Please enter your message');
+            isValid = false;
+        }
+
+        // If all valid, show popup
+        if (isValid) {
+          showSuccessPopup();
+        } else {
+          const firstError = document.querySelector(".error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+            firstError.focus();
+          }
+        }
+      });
+      
+      function showError(field, message) {
+          field.classList.add('error');
+          const errorElement = document.getElementById(field.id + 'Error');
+          errorElement.textContent = message;
+          errorElement.classList.add('show');
+      }
+      
+      // --- POPUP LOGIC ---
+      function showSuccessPopup() {
+        const popup = document.getElementById("successPopup");
+        popup.classList.add("show");
+      }
+      
+      function closePopup() {
+        const popup = document.getElementById("successPopup");
+        popup.classList.remove("show");
+        form.reset();
+        selectedRating = 0; // Reset rating
+        updateStars(); // Reset star visuals
+      }
+      
+      // Close popup on Escape key
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && document.getElementById('successPopup').classList.contains('show')) {
+              closePopup();
+          }
+      });
+
+      // Remove error on input
+      document.querySelectorAll("input, textarea").forEach(field => {
+          field.addEventListener("input", function () {
+              this.classList.remove("error");
+              const errorElement = document.getElementById(this.id + "Error");
+              if (errorElement) {
+                  errorElement.classList.remove("show");
+              }
+          });
+      });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
