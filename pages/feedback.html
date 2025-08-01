@@ -5,12 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Feedback Form - DeshDarshan</title>
 
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(ellipse at top left, rgba(160, 82, 45, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at top right, rgba(139, 69, 19, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(101, 67, 33, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(205, 133, 63, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg,
+            #8B4513 0%,
+            #A0522D 15%,
+            #CD853F 30%,
+            #D2B48C 45%,
+            #DEB887 60%,
+            #F5DEB3 75%,
+            #F5E6D3 90%,
+            #FDF5E6 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100vh;
+      background-image: url("data:image/svg+xml,..."); /* Keep your full SVG here */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      z-index: -2;
+      opacity: 0.7;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 15% 85%, rgba(160, 82, 45, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 85% 15%, rgba(139, 69, 19, 0.06) 0%, transparent 60%),
+        radial-gradient(circle at 45% 45%, rgba(205, 133, 63, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(222, 184, 135, 0.05) 0%, transparent 55%),
+        radial-gradient(circle at 25% 25%, rgba(245, 222, 179, 0.03) 0%, transparent 45%),
+        linear-gradient(45deg,
+          rgba(139, 69, 19, 0.02) 0%,
+          transparent 25%,
+          rgba(160, 82, 45, 0.02) 50%,
+          transparent 75%,
+          rgba(205, 133, 63, 0.02) 100%);
+      z-index: -1;
+    }
+  </style>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-indigo-100 via-white to-pink-100 text-gray-800 font-sans">
-  
-  <!-- Navigation -->
+<body>
+
+  <!-- Navbar -->
   <nav class="bg-white shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
       <div class="text-2xl font-bold text-indigo-700">DeshDarshan</div>
@@ -28,10 +89,10 @@
     </div>
   </nav>
 
-
-  <!-- Feedback Form -->
-  <section class="py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-2xl mx-auto bg-white bg-opacity-90 backdrop-blur-md rounded-2xl shadow-xl p-8">
+  <!-- Main Layout -->
+  <main class="flex flex-col lg:flex-row justify-center items-start p-6 gap-10 mt-6">
+    <!-- Feedback Form Section -->
+    <section class="w-full lg:w-[600px] bg-white bg-opacity-90 backdrop-blur-md rounded-2xl shadow-xl p-8">
       <h1 class="text-3xl font-bold text-center text-indigo-700 mb-6">Feedback Form</h1>
 
       <form id="feedbackForm" class="space-y-6">
@@ -83,8 +144,8 @@
           Submit Feedback
         </button>
       </form>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Popup -->
   <div class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="popupOverlay">
