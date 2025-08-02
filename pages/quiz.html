@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeshDarshan Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .indian-bg {
+      background: linear-gradient(-45deg, #FF9933, #d5f7ff, #daffd8, #138808);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    .glassy-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    }
+    .option-btn {
+      transition: all 0.3s ease;
+    }
+    .option-btn:hover {
+      transform: translateY(-2px);
+    }
+    .tiranga-btn {
+      background: linear-gradient(to right, #FF9933, #FFFFFF, #138808);
+      background-size: 300% 100%;
+      transition: all 0.5s ease;
+    }
+    .tiranga-btn:hover {
+      background-position: 100% 0;
+    }
+    .chakra {
+      color: #000080;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="indian-bg min-h-screen flex items-center justify-center p-6 font-sans">
+
+  <div id="start-screen" class="glassy-card p-8 rounded-2xl w-full max-w-xl text-center">
+    <div class="flex justify-center mb-4">
+      <span class="text-5xl">🇮🇳</span>
+    </div>
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">DeshDarshan Quiz</h1>
+    <p class="mb-6 text-gray-700">Test your knowledge of India's rich culture, heritage, and festivals!</p>
+    <label class="block mb-3 font-medium text-gray-800">Select Number of Questions:</label>
+    <select id="questionCount" class="mb-6 w-full bg-white border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+      <option value="10">10 Questions</option>
+      <option value="20">20 Questions</option>
+      <option value="30">30 Questions</option>
+      <option value="40">40 Questions</option>
+      <option value="50">50 Questions</option>
+    </select>
+    <button id="startBtn" class="tiranga-btn text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all w-full">
+      Start Quiz
+    </button>
+  </div>
+
+  <div id="quiz-box" class="hidden glassy-card p-8 rounded-2xl w-full max-w-2xl">
+    <div class="flex justify-between items-center mb-6">
+      <div id="questionCounter" class="text-sm font-medium text-gray-700"></div>
+      <div class="w-1/2 bg-gray-200 rounded-full h-3">
+        <div id="progressBar" class="bg-gradient-to-r from-orange-500 via-white to-green-500 h-3 rounded-full" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div id="questionText" class="text-2xl font-bold text-gray-800 mb-6"></div>
+    <div id="optionsList" class="grid grid-cols-1 gap-3 mb-6"></div>
+
+    <button id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
+      <span class="chakra">☸</span> Submit Answer
+    </button>
+    
+    <div id="feedback" class="mt-6 text-center hidden space-y-3">
+      <div id="correctFeedback" class="text-xl font-bold text-green-600 hidden flex items-center justify-center">
+        <span class="text-2xl mr-2">✓</span> Correct Answer!
+      </div>
+      <div id="wrongFeedback" class="text-xl font-bold text-red-600 hidden flex items-center justify-center">
+        <span class="text-2xl mr-2">✗</span> Wrong Answer!
+      </div>
+      <div id="correctAnswer" class="text-lg text-gray-800 hidden">
+        <div class="font-semibold">The correct answer is:</div>
+        <div class="font-bold mt-1 text-blue-700"></div>
+      </div>
+    </div>
+    
+    <button id="nextBtn" class="mt-6 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg shadow-md hover:shadow-lg hidden transition-all">
+      Next Question <span class="ml-2">→</span>
+    </button>
+  </div>
+
+  <div id="resultBox" class="hidden glassy-card text-center p-8 rounded-2xl w-full max-w-xl">
+    <div class="flex justify-center mb-4">
+      <span class="text-5xl">🎉</span>
+    </div>
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">Quiz Completed!</h2>
+    <div class="bg-white rounded-xl p-6 mb-8 border border-gray-200">
+      <p id="finalScore" class="text-2xl font-bold text-gray-800"></p>
+      <div id="scoreMessage" class="text-lg text-gray-700 mt-3"></div>
+    </div>
+    <button onclick="window.location.reload()" class="tiranga-btn text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all w-full">
+      <span class="chakra">☸</span> Restart Quiz
+    </button>
+  </div>
+
+  <script>
+    let allQuestions = [];
+    let questions = [];
+    let currentQuestion = 0;
+    let score = 0;
+    let selectedOption = null;
+
+    const startScreen = document.getElementById("start-screen");
+    const quizBox = document.getElementById("quiz-box");
+    const resultBox = document.getElementById("resultBox");
+    const startBtn = document.getElementById("startBtn");
+    const submitBtn = document.getElementById("submitBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const questionText = document.getElementById("questionText");
+    const optionsList = document.getElementById("optionsList");
+    const questionCountSelect = document.getElementById("questionCount");
+    const questionCounter = document.getElementById("questionCounter");
+    const progressBar = document.getElementById("progressBar");
+    const finalScore = document.getElementById("finalScore");
+    const scoreMessage = document.getElementById("scoreMessage");
+    const correctFeedback = document.getElementById("correctFeedback");
+    const wrongFeedback = document.getElementById("wrongFeedback");
+    const correctAnswer = document.getElementById("correctAnswer");
+    const correctAnswerSpan = correctAnswer.querySelector("div.font-bold");
+
+    startBtn.onclick = async () => {
+      const numQs = parseInt(questionCountSelect.value);
+      try {
+        const res = await fetch("../questions.json");
+        allQuestions = await res.json();
+        questions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, numQs);
+        startScreen.classList.add("hidden");
+        quizBox.classList.remove("hidden");
+        showQuestion();
+      } catch (err) {
+        alert("Failed to load questions.");
+      }
+    };
+
+    function showQuestion() {
+      const q = questions[currentQuestion];
+      questionText.innerText = q.question;
+      optionsList.innerHTML = '';
+      
+      // Hide all feedback elements
+      correctFeedback.classList.add('hidden');
+      wrongFeedback.classList.add('hidden');
+      correctAnswer.classList.add('hidden');
+      
+      nextBtn.classList.add('hidden');
+      submitBtn.disabled = true;
+      selectedOption = null;
+
+      questionCounter.innerText = `Question ${currentQuestion + 1} of ${questions.length}`;
+      progressBar.style.width = `${((currentQuestion) / questions.length) * 100}%`;
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.className = "option-btn w-full bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-lg border border-gray-300 transition-all";
+        btn.onclick = () => selectOption(btn);
+        optionsList.appendChild(btn);
+      });
+    }
+
+    function selectOption(button) {
+      selectedOption = button.innerText;
+      submitBtn.disabled = false;
+      
+      // Remove selection from all buttons
+      document.querySelectorAll("#optionsList button").forEach(btn => {
+        btn.classList.remove("bg-orange-100", "border-orange-400", "text-orange-800");
+      });
+      
+      // Add selection to clicked button
+      button.classList.add("bg-orange-100", "border-orange-400", "text-orange-800");
+    }
+
+    submitBtn.onclick = () => {
+      const correctAnswerText = questions[currentQuestion].answer;
+      document.querySelectorAll("#optionsList button").forEach(btn => {
+        btn.disabled = true;
+        if (btn.innerText === correctAnswerText) {
+          btn.classList.remove("border-orange-400");
+          btn.classList.add("bg-green-100", "border-green-400", "text-green-800");
+        } else if (btn.innerText === selectedOption && selectedOption !== correctAnswerText) {
+          btn.classList.remove("border-orange-400");
+          btn.classList.add("bg-red-100", "border-red-400", "text-red-800");
+        }
+      });
+
+      if (selectedOption === correctAnswerText) {
+        score++;
+        correctFeedback.classList.remove("hidden");
+        wrongFeedback.classList.add("hidden");
+        correctAnswer.classList.add("hidden");
+      } else {
+        correctFeedback.classList.add("hidden");
+        wrongFeedback.classList.remove("hidden");
+        correctAnswer.classList.remove("hidden");
+        correctAnswerSpan.textContent = correctAnswerText;
+      }
+
+      submitBtn.disabled = true;
+      nextBtn.classList.remove("hidden");
+    };
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        quizBox.classList.add("hidden");
+        finalScore.innerText = `${score} / ${questions.length} Correct Answers`;
+        
+        // Add a fun message based on score
+        const percentage = (score / questions.length) * 100;
+        if (percentage >= 90) {
+          scoreMessage.innerHTML = "<span class='text-green-600'>Bharat Ratna Level Knowledge!</span> 🇮🇳";
+        } else if (percentage >= 75) {
+          scoreMessage.innerHTML = "<span class='text-blue-600'>Great! You're a true patriot!</span>";
+        } else if (percentage >= 50) {
+          scoreMessage.textContent = "Good effort! Keep learning about Incredible India!";
+        } else {
+          scoreMessage.textContent = "Keep exploring India's diverse culture and heritage!";
+        }
+        
+        resultBox.classList.remove("hidden");
+        progressBar.style.width = `100%`;
+      }
+    };
+  </script>
+</body>
+</html>
