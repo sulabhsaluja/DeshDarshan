@@ -62,10 +62,10 @@
 
 <body>
     <div class="main-content">
-      <div class="container">
-        <div class="form-card">
-          <h1>Want to share your idea?<br />Collaborate with us.</h1>
-          <p>Join our cultural journey across incredible India</p>
+      <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="form-card mx-auto" style="margin-top: 80px; margin-bottom: 40px; max-width: 520px; min-width: 340px; padding: 32px 24px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); border-radius: 18px; background: #fff; min-height: unset;">
+          <h1 style="font-size: 1.6rem;">Want to share your idea?<br />Collaborate with us.</h1>
+          <p style="font-size: 1rem;">Join our cultural journey across incredible India</p>
           <form id="collaborationForm" novalidate>
             <div class="form-group">
               <label for="name">Name *</label>
@@ -75,6 +75,7 @@
                 name="name"
                 required
                 aria-describedby="nameError"
+                placeholder="Enter your name"
               />
               <div class="error-message" id="nameError">
                 Please enter your name
@@ -89,23 +90,10 @@
                 name="email"
                 required
                 aria-describedby="emailError"
+                placeholder="Enter your email address"
               />
               <div class="error-message" id="emailError">
                 Please enter a valid email address
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number *</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required
-                aria-describedby="phoneError"
-              />
-              <div class="error-message" id="phoneError">
-                Please enter your phone number
               </div>
             </div>
 
@@ -415,7 +403,6 @@
         const requiredFields = [
           { id: "name", message: "Please enter your name" },
           { id: "email", message: "Please enter a valid email address" },
-          { id: "phone", message: "Please enter your phone number" },
           { id: "state", message: "Please select your state/UT" },
           { id: "message", message: "Please enter your message" },
         ];
@@ -455,17 +442,6 @@
         if (emailField.value && !emailRegex.test(emailField.value)) {
           emailField.classList.add("error");
           document.getElementById("emailError").classList.add("show");
-          isValid = false;
-        }
-
-        // Phone validation (basic)
-        const phoneField = document.getElementById("phone");
-        const phoneRegex = /^[\d\s\-\+()]{10,}$/;
-        if (phoneField.value && !phoneRegex.test(phoneField.value)) {
-          phoneField.classList.add("error");
-          document.getElementById("phoneError").textContent =
-            "Please enter a valid phone number";
-          document.getElementById("phoneError").classList.add("show");
           isValid = false;
         }
 
