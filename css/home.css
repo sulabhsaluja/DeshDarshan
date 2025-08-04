@@ -50,8 +50,15 @@ body {
 
 .nav-menu {
     display: flex;
+    flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+    font-size: 12px;
+    display: flex;
+    margin-top: 3px;
+    margin-left: 37px;
     list-style: none;
-    gap: 2rem;
+    gap: 25px;
 }
 
 .nav-menu a {
