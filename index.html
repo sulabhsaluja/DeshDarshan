@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64,6 +67,7 @@
         animation: blobMove 40s infinite alternate ease-in-out;
       }
 
+
       .blob2 {
         background: radial-gradient(
           circle,
@@ -76,6 +80,14 @@
         left: 65%;
         animation: blobMove 45s infinite alternate ease-in-out;
       }
+
+
+<!-- BACK blobs -->
+<div class="blob-background-back">
+  <div class="blob blob-back1"></div>
+  <div class="blob blob-back2"></div>
+</div>
+
 
       .blob3 {
         background: radial-gradient(
@@ -116,6 +128,7 @@
         left: 20%;
         animation: blobMove 70s infinite alternate ease-in-out;
       }
+
 
       /* KEYFRAME ANIMATION */
       @keyframes blobMove {
@@ -199,6 +212,87 @@
           <span></span>
           <span></span>
           <span></span>
+
+
+<!-- Navigation Bar -->
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h2 data-translate="header">Desh Darshan</h2>
+      </div>
+      <ul class="nav-menu">
+
+        <li><a href="./pages/about us.html" data-translate="nav-about">About Us</a></li>
+        <li><a href="./pages/explore.html" data-translate="nav-explore">Explore India</a></li>
+        <li><a href="./pages/feedback.html" data-translate="nav-feedback">Feedback</a></li>
+        <li><a href="./pages/contactus.html" data-translate="nav-contact">Contact Us</a></li>
+      <li><a href="pages/crazyfacts.html" data-translate="nav-crazyfacts">Crazy Facts</a></li>
+        <li><a href="pages/destination.html" data-translate="nav-destination">Hidden Destinations</a></li>
+
+        <li>
+         <div class="home-box tooltip" style="padding-top: 2px;">
+  <a href="/P2/DeshDarshan/pages/best_time.html">
+    <i class="fas fa-calendar-alt fa-2x" aria-hidden="true"></i>
+  </a>
+  <span class="tooltiptext">See best time to travel across India</span>
+</div>
+
+        </li>
+
+
+
+        <li><a href="pages/quiz.html" data-translate="nav-destination">Quiz</a></li>
+
+      </ul>
+      <div class="nav-buttons">
+        <a href="./pages/login.html" class="btn-login ">
+          <span>Login</span>
+
+          <!-- <i class="fas fa-sign-in-alt"></i> -->
+          <i class="fas fa-user-plus"></i>
+        </a>
+        <a href="pages/signup.html" class="btn-signup">
+          <span>Signup</span>  
+
+          <i class="fas fa-user-plus"></i>
+        </a>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+<!-- Hero Section with Slideshow -->
+  <section class="hero">
+    <div class="slideshow-container">
+      <div class="slide active">
+        <img src="assets/images/beauty.jpg" alt="beauty">
+        <div class="slide-content">
+          <h1 data-translate="hero-title-1">Discover The Beauty Of India</h1>
+          <p data-translate="hero-desc-1">Experience The Rich Heritage, Vibrant Culture, And Timeless Traditions</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="assets/images/festival.jpg" alt="Kerala backwaters">
+        <div class="slide-content">
+          <h1 data-translate="hero-title-2">A Land Of 1000 Festivals</h1>
+          <p data-translate="hero-desc-2">Festivals That Honor Nature, Gods, And Traditions.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="assets/images/food.jpg" alt="Royal Heritage">
+        <div class="slide-content">
+          <h1 data-translate="hero-title-3">A Taste You’ll Never Forget</h1>
+          <p data-translate="hero-desc-3">Food That Connects Hearts And Homes.</p>
+
         </div>
       </div>
     </nav>
@@ -302,6 +396,7 @@
             </div>
           </div>
 
+
           <div class="culture-item">
             <img src="assets/images/christmas.jpg" alt="Christmas" />
             <div class="culture-caption">
@@ -310,7 +405,16 @@
                 Celebrating peace, love, and the magic of winter
               </p>
             </div>
+
+
+        <div class="culture-item">
+          <img src="assets/images/christmas.jpg" alt="Christmas">
+          <div class="culture-caption">
+            <h3 data-translate="christmas-title">Christmas</h3>
+            <p data-translate="christmas-desc">Celebrating peace, love, and the magic of winter</p>
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/navratri.jpg" alt="Durga Puja" />
@@ -320,7 +424,16 @@
                 Grand celebration honoring the divine feminine power
               </p>
             </div>
+
+        <div class="culture-item">
+          <img src="assets/images/navratri.jpg" alt="Durga Puja">
+          <div class="culture-caption">
+            <h3 data-translate="durga-title">Navratri</h3>
+            <p data-translate="durga-desc">Grand celebration honoring the divine feminine power</p>
+
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/pongal.jpg" alt="Pongal" />
@@ -330,7 +443,22 @@
                 Harvest festival celebrating prosperity and nature
               </p>
             </div>
+
+        <div class="culture-item">
+
+          <img src="assets/images/navratri.jpg" alt="Durga Puja">
+          <div class="culture-caption">
+            <h3 data-translate="durga-title">Navratri</h3>
+            <p data-translate="durga-desc">Grand celebration honoring the divine feminine power</p>
+
+          <img src="assets/images/pongal.jpg" alt="Pongal">
+          <div class="culture-caption">
+            <h3 data-translate="pongal-title">Pongal</h3>
+            <p data-translate="pongal-desc">Harvest festival celebrating prosperity and nature</p>
+
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/lohri.jpg" alt="Baisakhi" />
@@ -340,7 +468,22 @@
                 Celebrating harvest and the end of winter
               </p>
             </div>
+
+        <div class="culture-item">
+
+          <img src="assets/images/pongal.jpg" alt="Pongal">
+          <div class="culture-caption">
+            <h3 data-translate="pongal-title">Pongal</h3>
+            <p data-translate="pongal-desc">Harvest festival celebrating prosperity and nature</p>
+
+          <img src="assets/images/lohri.jpg" alt="Baisakhi">
+          <div class="culture-caption">
+            <h3 data-translate="lohri-title">Lohri</h3>
+            <p data-translate="lohri-desc">Celebrating harvest and the end of winter</p>
+
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/makar.jpg" alt="Baisakhi" />
@@ -350,7 +493,21 @@
                 Kites fly, harvest season and Tilgul festival
               </p>
             </div>
+
+        <div class="culture-item">
+
+          <img src="assets/images/lohri.jpg" alt="Baisakhi">
+          <div class="culture-caption">
+            <h3 data-translate="lohri-title">Lohri</h3>
+            <p data-translate="lohri-desc">Celebrating harvest and the end of winter</p>
+         <img src="assets/images/makar.jpg" alt="Baisakhi">
+          <div class="culture-caption">
+            <h3 data-translate="makarsankranti-title">Makar Sankranti</h3>
+            <p data-translate="makarsankranti-desc">Kites fly, harvest season and Tilgul festival</p>
+
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/mahashiv.jpg" alt="Baisakhi" />
@@ -360,7 +517,22 @@
                 Festival dedicated to worship Lord Shiva
               </p>
             </div>
+
+        <div class="culture-item">
+
+          <img src="assets/images/makar.jpg" alt="Baisakhi">
+          <div class="culture-caption">
+            <h3 data-translate="makarsankranti-title">Makar Sankranti</h3>
+            <p data-translate="makarsankranti-desc">Kites fly, harvest season and Tilgul festival</p>
+
+          <img src="assets/images/mahashiv.jpg" alt="Baisakhi">
+          <div class="culture-caption">
+            <h3 data-translate="mahashivratri-title">Maha Shivratri</h3>
+            <p data-translate="mahashivratri-desc">Festival dedicated to worship Lord Shiva</p>
+
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/holi.jpg" alt="Holi celebration" />
@@ -371,7 +543,21 @@
                 of spring
               </p>
             </div>
+
+        <div class="culture-item">
+
+          <img src="assets/images/mahashiv.jpg" alt="Baisakhi">
+          <div class="culture-caption">
+            <h3 data-translate="mahashivratri-title">Maha Shivratri</h3>
+            <p data-translate="mahashivratri-desc">Festival dedicated to worship Lord Shiva</p>
+
+         <img src="assets/images/holi.jpg" alt="Holi celebration">
+         <div class="culture-caption">
+          <h3 data-translate="holi-title">Holi</h3>
+          <p data-translate="holi-desc">Vibrant festival of colors celebrating love, joy and the arrival of spring</p>
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/gudi.jpg" alt="Gudi" />
@@ -381,7 +567,21 @@
                 Traditional festival celebrating the marathi new year
               </p>
             </div>
+
+        <div class="culture-item">
+
+         <img src="assets/images/holi.jpg" alt="Holi celebration">
+         <div class="culture-caption">
+          <h3 data-translate="holi-title">Holi</h3>
+          <p data-translate="holi-desc">Vibrant festival of colors celebrating love, joy and the arrival of spring</p>
+
+          <img src="assets/images/gudi.jpg" alt="Gudi">
+          <div class="culture-caption">
+            <h3 data-translate="Gudi-title">Gudi Padwa</h3>
+            <p data-translate="Gudi-desc">Traditional festival celebrating the marathi new year</p>
+
           </div>
+
 
           <div class="culture-item">
             <img src="assets/images/janmashtami.jpg" alt="Janmashtami" />
@@ -392,6 +592,14 @@
                 dahi-handi
               </p>
             </div>
+
+        <div class="culture-item">
+
+          <img src="assets/images/janmashtami.jpg" alt="Janmashtami">
+          <div class="culture-caption">
+            <h3 data-translate="Janmashtami-title">Janmashtami</h3>
+            <p data-translate="Janmashtami-desc">Celebrates the birth of Lord Krishna with devotion, joy and dahi-handi</p>
+
           </div>
 
           <div class="culture-item">
@@ -726,7 +934,12 @@
             </div>
           </div>
           <div class="dance-item">
+
             <img src="assets/images/K-Dance7.jpg" alt="Mohiniyattam" />
+
+
+            <img src="assets/images/K-Dance7.jpg" alt="Mohiniyattam">
+
             <div class="dance-overlay">
               <h3 data-translate="mohiniyattam-title">Mohiniyattam</h3>
               <p data-translate="mohiniyattam-desc">
@@ -734,6 +947,7 @@
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -803,6 +1017,149 @@
           </div>
         </div>
       </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+<!-- Footer -->
+ <footer>
+    <div class="footer-content-wrapper">
+    <!-- Section 1: About Desh Darshan -->
+      <div class="footer-section">
+        <h3 class="footer-section-title">Desh Darshan</h3>
+        <p>Desh Darshan is your gateway to the vibrant and diverse culture of India. We aim to introduce the world to India's rich heritage, traditions, arts, and history.</p>
+      </div>
+
+    <!-- Section 2: Quick Links -->
+      <div class="footer-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul>
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about us.html" class="footer-link">About Us</a></li>
+          <li><a href="explore.html" class="footer-link">Explore India</a></li>
+          <li><a href="feedback.html" class="footer-link">Feedback</a></li>
+          <li><a href="contactus.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+
+    <!-- Section 3: Contact Us -->
+      <div class="footer-section">
+        <h3 class="footer-section-title">Contact Us</h3>
+        <ul>
+          <li class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>hello@deshdarshan.in</span>
+          </li>
+          <li class="footer-contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 1234567890</span>
+          </li>
+          <li class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>New Delhi, India</span>
+          </li>
+        </ul>
+      </div>
+
+    <!-- Section 4: Follow Us -->
+      <div class="footer-section">
+        <h3 class="footer-section-title">Follow Us</h3>
+        <div class="social-icons-container">
+          <a href="https://www.facebook.com/" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/" class="social-icon" aria-label="Behance"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+    </div>
+      
+    <!--copyright -->
+      <div class="copyright-section">&copy; <span id="year"></span> Desh Darshan. All rights reserved.</div>
+  </footer>
+
+  <script>
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 40;
+    const y = (e.clientY / window.innerHeight - 0.5) * 40;
+
+    document.querySelectorAll('.blob').forEach((blob, index) => {
+      const speed = 1 + index * 0.3;
+      blob.style.transform = `translate(${x * speed}px, ${y * speed}px) scale(1)`;
+    });
+  });
+</script>
+
+<script>
+  // Parallax movement based on mouse position
+  document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 30;
+    const y = (e.clientY / window.innerHeight - 0.5) * 30;
+
+    gsap.to(".blob1", {
+      x: x * 1.5,
+      y: y * 1.5,
+      duration: 2,
+      ease: "power2.out"
+    });
+
+    gsap.to(".blob2", {
+      x: x * -1.2,
+      y: y * -1.2,
+      duration: 2,
+      ease: "power2.out"
+    });
+
+    gsap.to(".blob3", {
+      x: x * 0.8,
+      y: y * 0.8,
+      duration: 2,
+      ease: "power2.out"
+    });
+
+    gsap.to(".blob-back1", {
+      x: x * 0.4,
+      y: y * 0.4,
+      duration: 3,
+      ease: "power1.out"
+    });
+
+    gsap.to(".blob-back2", {
+      x: x * -0.4,
+      y: y * -0.4,
+      duration: 3,
+      ease: "power1.out"
+    });
+  });
+
+  // Continuous GSAP floating animation
+  const floatBlob = (selector, xVal, yVal, duration) => {
+    gsap.to(selector, {
+      x: xVal,
+      y: yVal,
+      duration: duration,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+  };
+
+  floatBlob(".blob1", 30, -20, 12);
+  floatBlob(".blob2", -25, 30, 14);
+  floatBlob(".blob3", 15, -25, 16);
+  floatBlob(".blob-back1", -20, 15, 20);
+  floatBlob(".blob-back2", 25, -30, 22);
+</script>
+
+
+
+
+<script src="js/home.js"></script>
+</body>
+
 
       <!--copyright -->
       <div class="copyright-section">
