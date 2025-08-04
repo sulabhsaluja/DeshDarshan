@@ -190,6 +190,26 @@
                 <div class="radio-option">
                   <input
                     type="radio"
+                    id="artist"
+                    name="collaborationType"
+                    value="artist"
+                    required
+                  />
+                  <label for="artist">🎨 Artist/Creator</label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="entrepreneur"
+                    name="collaborationType"
+                    value="entrepreneur"
+                    required
+                  />
+                  <label for="entrepreneur">🚀 Entrepreneur</label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
                     id="other"
                     name="collaborationType"
                     value="other"
@@ -229,6 +249,20 @@
                     min="0"
                     max="50"
                   />
+                </div>
+              </div>
+
+              <div class="conditional-field" id="artistField">
+                <div class="form-group">
+                  <label for="artField">Field (e.g., Music, Painting, Dance) *</label>
+                  <input type="text" id="artField" name="artField" />
+                </div>
+              </div>
+
+              <div class="conditional-field" id="entrepreneurField">
+                <div class="form-group">
+                  <label for="startupName">Startup/Business Name *</label>
+                  <input type="text" id="startupName" name="startupName" />
                 </div>
               </div>
 
@@ -364,6 +398,8 @@
         student: document.getElementById("studentField"),
         researcher: document.getElementById("researcherField"),
         job: document.getElementById("jobField"),
+        artist: document.getElementById("artistField"),
+        entrepreneur: document.getElementById("entrepreneurField"),
         other: document.getElementById("otherField"),
       };
 
@@ -482,6 +518,20 @@
               }
               if (!experienceField.value.trim()) {
                 experienceField.classList.add("error");
+                isValid = false;
+              }
+              break;
+            case "artist":
+              const artField = document.getElementById("artField");
+              if (!artField.value.trim()) {
+                artField.classList.add("error");
+                isValid = false;
+              }
+              break;
+            case "entrepreneur":
+              const startupField = document.getElementById("startupName");
+              if (!startupField.value.trim()) {
+                startupField.classList.add("error");
                 isValid = false;
               }
               break;
