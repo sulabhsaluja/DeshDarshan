@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore India</title>
-     <link rel="icon" href="assets/images/Desh darshan Logo.png" type="image/png">
+    <!-- FIX: Correct favicon path for subfolder -->
+    <link rel="icon" href="../assets/images/Desh darshan Logo.png" type="image/png">
     <link rel="icon" href="data:,"> <!-- this line silences the favicon 404 -->
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -13,7 +14,6 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
 
     <style>
         * {
@@ -1385,80 +1385,66 @@
             document.body.style.overflow = 'hidden';
         }
 
-function initializeMap(lat, lng, stateName, capital, isLocked = false) {
-    if (currentMap) currentMap.remove();
+        function showStateMap(stateName) {
+            const stateInfo = stateCoordinates[stateName];
+            if (!stateInfo) return;
 
-    // Get stateInfo for link (needed for Explore, Punjab, and future states)
-    const stateInfo = stateCoordinates[stateName] || {};
+            document.getElementById('mapModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
 
-    // Add popup with state information
-    let popupContent = `
-        <div style="text-align: center; font-family: Arial, sans-serif;">
-            <h3 style="margin: 0 0 10px 0; color: #333;">${isLocked ? '🔒 ' : ''}${stateName}</h3>
-            <p style="margin: 0; color: #666;"><strong>Capital:</strong> ${capital}</p>
-            <p style="margin: 5px 0 0 0; color: #666;"><strong>Coordinates:</strong> ${lat.toFixed(4)}, ${lng.toFixed(4)}</p>
-    `;
+            // Clean up previous map if exists
+            if (currentMap) {
+                currentMap.remove();
+                currentMap = null;
+            }
 
-    if (isLocked) {
-        popupContent += `
-            <p style="margin: 10px 0 0 0; color: #888; font-size: 0.9em; font-style: italic;">
-                Preview Mode - Sign up to unlock full details!
-            </p>
-        `;
-    }
+            // Compose popup content
+            let popupContent = `
+                <div style="text-align: center; font-family: Arial, sans-serif;">
+                    <h3 style="margin: 0 0 10px 0; color: #333;">${stateName}</h3>
+                    <p style="margin: 0; color: #666;"><strong>Capital:</strong> ${stateInfo.capital}</p>
+                    <p style="margin: 5px 0 0 0; color: #666;"><strong>Coordinates:</strong> ${stateInfo.lat.toFixed(4)}, ${stateInfo.lng.toFixed(4)}</p>
+            `;
 
-    popupContent += `</div>`;
+            // Add "Visit More" link if available
+            if (stateInfo.link) {
+                popupContent += `
+                    <a href="${stateInfo.link}" target="_blank" style="
+                        display: inline-block;
+                        margin-top: 10px;
+                        padding: 6px 12px;
+                        background-color: #4CAF50;
+                        color: white;
+                        border-radius: 4px;
+                        text-decoration: none;
+                        font-size: 0.9em;
+                    ">Visit More</a>
+                `;
+            }
 
-    currentMap = L.map('mapContainer').setView([lat, lng], 6);
+            popupContent += `</div>`;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-    }).addTo(currentMap);
+            // Create new map
+            currentMap = L.map('stateMap').setView([stateInfo.lat, stateInfo.lng], 7);
 
-    L.marker([lat, lng]).addTo(currentMap)
-        .bindPopup(popupContent)
-        .openPopup();
-}
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 18,
+            }).addTo(currentMap);
 
-    // Add "Visit More" link if available
-    if (stateInfo.link) {
-        popupContent += `
-            <a href="${stateInfo.link}" target="_blank" style="
-                display: inline-block;
-                margin-top: 10px;
-                padding: 6px 12px;
-                background-color: #4CAF50;
-                color: white;
-                border-radius: 4px;
-                text-decoration: none;
-                font-size: 0.9em;
-            ">Visit More</a>
-        `;
-    }
+            const marker = L.marker([stateInfo.lat, stateInfo.lng]).addTo(currentMap);
+            marker.bindPopup(popupContent).openPopup();
 
-    popupContent += `</div>`;
+            const circleColor = '#667eea';
+            L.circle([stateInfo.lat, stateInfo.lng], {
+                color: circleColor,
+                fillColor: circleColor,
+                fillOpacity: 0.2,
+                radius: 50000
+            }).addTo(currentMap);
 
-    // Create new map
-    currentMap = L.map('stateMap').setView([lat, lng], 7);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 18,
-    }).addTo(currentMap);
-
-    const marker = L.marker([lat, lng]).addTo(currentMap);
-    marker.bindPopup(popupContent).openPopup();
-
-    const circleColor = isLocked ? '#ff6b6b' : '#667eea';
-    L.circle([lat, lng], {
-        color: circleColor,
-        fillColor: circleColor,
-        fillOpacity: isLocked ? 0.1 : 0.2,
-        radius: 50000
-    }).addTo(currentMap);
-
-    setTimeout(() => currentMap.invalidateSize(), 200);
-}
+            setTimeout(() => currentMap.invalidateSize(), 200);
+        }
 
 // Close modal and map with ESC key
 document.addEventListener('keydown', function (e) {
@@ -1484,6 +1470,8 @@ function toggleAudio() {
     isPlaying = !isPlaying;
 }
 
+// FIX: Set copyright year
+document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 
