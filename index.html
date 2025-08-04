@@ -219,7 +219,7 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <h2 data-translate="header">Desh Darshan</h2>
+        <h2 data-translate="header" class="logo">Desh Darshan</h2>
       </div>
       <ul class="nav-menu">
 
@@ -229,6 +229,8 @@
         <li><a href="./pages/contactus.html" data-translate="nav-contact">Contact Us</a></li>
       <li><a href="pages/crazyfacts.html" data-translate="nav-crazyfacts">Crazy Facts</a></li>
         <li><a href="pages/destination.html" data-translate="nav-destination">Hidden Destinations</a></li>
+        <li><a href="pages/learn_lang.html" data-translate="nav-destination">Learn Languages</a></li>
+        <li><a href="pages/quiz.html" data-translate="nav-destination">Quiz</a></li>
 
         <li>
          <div class="home-box tooltip" style="padding-top: 2px;">
@@ -242,7 +244,7 @@
 
 
 
-        <li><a href="pages/quiz.html" data-translate="nav-destination">Quiz</a></li>
+        
 
       </ul>
       <div class="nav-buttons">
@@ -1155,6 +1157,25 @@
 </script>
 
 
+<button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button> -->
+<script>
+  // Get the button
+  const backToTopBtn = document.getElementById("backToTopBtn");
+
+  // Show the button after scrolling down 300px
+  window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  };
+
+  // Scroll to top when button is clicked
+  backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+</script>
 
 
 <script src="js/home.js"></script>
@@ -1245,3 +1266,4 @@
     <script src="js/home.js"></script>
   </body>
 </html>
+
