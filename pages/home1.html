@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spirit of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/home.css">
     <style>
@@ -330,26 +331,27 @@
         }
 
         #backToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 40px;
-            right: 30px;
-            z-index: 99;
-            font-size: 30px;
-            border: none;
-            outline: none;
-            background-color: transparent;
-            color: white;
-            cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        #backToTopBtn:hover {
-            background-color: transparent;
-            transform: translateY(-5px);
-        }
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background-color: #ff914d; /* match signup button */
+    color: white;
+    cursor: pointer;
+    padding: 14px 18px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  #backToTopBtn:hover {
+    background-color: #e67a35;
+    transform: scale(1.1);
+  }
 
         @media (min-width: 768px) {
             .footer-content-wrapper {
@@ -543,7 +545,25 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTopBtn" title="Go to top">🔝</button>
+    <button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button> -->
+<script>
+  // Get the button
+  const backToTopBtn = document.getElementById("backToTopBtn");
+
+  // Show the button after scrolling down 300px
+  window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  };
+
+  // Scroll to top when button is clicked
+  backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+</script>
 
     <script src="../js/home1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -388,11 +388,30 @@
           </div>
         </div>
       </div>
-      <!--copyright -->
+     
       <div class="copyright-section">
         &copy; <span id="year"></span> Desh Darshan. All rights reserved.
       </div>
     </footer>
+<button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+<script>
+  // Get the button
+  const backToTopBtn = document.getElementById("backToTopBtn");
+
+  // Show the button after scrolling down 300px
+  window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  };
+
+  // Scroll to top when button is clicked
+  backToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+</script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
 
