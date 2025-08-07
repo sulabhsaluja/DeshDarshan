@@ -5,7 +5,7 @@ const params = new URLSearchParams(window.location.search);
 const foodKey = params.get("food");
 
 // 2. Load JSON and populate content
-fetch("food.json")
+fetch("data/food.json")
   .then((response) => response.json())
   .then((data) => {
     const food = data[foodKey];
@@ -44,7 +44,7 @@ fetch("food.json")
 let currentFactIndex = 0;
 let facts = [];
 
-fetch("food.json")
+fetch("data/food.json")
   .then((response) => response.json())
   .then((data) => {
     facts = data[foodKey]?.funFact || [];
@@ -146,7 +146,7 @@ function speakFact(text) {
 let currentSlide = 0;
 let slides = [];
 
-fetch("dishes.json")
+fetch("data/dishes.json")
   .then((res) => res.json())
   .then((data) => {
     slides = data[foodKey];
