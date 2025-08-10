@@ -253,6 +253,7 @@ body {
         opacity: 0;
         transform: translateY(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -500,45 +501,45 @@ body {
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    
+
     .controls-wrapper {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .filter-section {
         flex-direction: column;
     }
-    
+
     .view-controls {
         justify-content: center;
     }
-    
+
     .festival-details {
         flex-direction: column;
     }
-    
+
     .festival-image {
         height: 200px;
     }
-    
+
     .festival-info {
         padding: 1.5rem;
     }
-    
+
     .festival-info h2 {
         font-size: 1.5rem;
     }
-    
+
     .festival-meta {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .upcoming-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -548,31 +549,31 @@ body {
     .hero-content h1 {
         font-size: 2rem;
     }
-    
+
     .hero-content p {
         font-size: 1rem;
     }
-    
+
     .calendar-controls {
         padding: 1rem 0;
     }
-    
+
     #calendar {
         padding: 1rem;
     }
-    
+
     .fc-toolbar-title {
         font-size: 1.4rem !important;
     }
-    
+
     .stats-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .stat-card {
         padding: 1.5rem;
     }
-    
+
     .stat-card h3 {
         font-size: 2rem;
     }
@@ -597,8 +598,13 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Empty State */
@@ -621,4 +627,4 @@ body {
 
 .empty-state p {
     font-size: 1rem;
-} 
+}
